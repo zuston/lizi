@@ -11,3 +11,4 @@ Now the deployment of vercel has been supported, doc will be added ASAP.
 3. Support pluggable blog template
 4. Support github page
 5. Support github issue as blog content
+6. Support producing artifact by github workflow action
