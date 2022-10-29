@@ -7,5 +7,7 @@ Now the deployment of vercel has been supported, doc will be added ASAP.
 
 ### Roadmap
 1. Support blog comment
-2. Support pluggable blog template
-3. Support github page
+2. Support specific label/category to decide whether to publish
+3. Support pluggable blog template
+4. Support github page
+5. Support github issue as blog content
