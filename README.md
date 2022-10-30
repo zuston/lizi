@@ -15,3 +15,4 @@ The blog site is built by this project, http://zuston.github.io
 - [x] Support github page
 - [ ] Support github issue as blog content
 - [ ] Support producing artifact by github workflow action
+- [ ] Provide the github-action to trigger the github-page deploy
