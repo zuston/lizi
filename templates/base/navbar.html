@@ -1,12 +1,37 @@
 <nav id="header">
-    <div class="w-full flex items-center justify-between mt-0 px-6 py-2">
-       <div class="md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-          <nav >
-             <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-                <li><a class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 item-menu" href="/">Home</a></li>
-             </ul>
-          </nav>
-       </div>
-       
+    <div class="bg-gray-100">
+        <header class="sticky top-0 z-30 w-full px-2 py-4 bg-white sm:px-4 shadow">
+            <div class="flex items-center justify-between mx-auto max-w-7xl">
+                <a href="/">
+                    <span class="text-2xl font-extrabold text-blue-600">{{ .User }}</span>
+                </a>
+                <div class="flex items-center space-x-1">
+                    <ul class="hidden space-x-2 md:inline-flex">
+                        <li><a href="/" class="px-4 py-2 font-semibold text-gray-600 rounded">Home</a></li>
+                    </ul>
+                    <div class="inline-flex md:hidden">
+                        <button class="flex-none px-2 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                            </svg>
+                            <span class="sr-only">Open Menu</span>
+                        </button>
+                        <!-- put list item -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
     </div>
+<!--    <div class="w-full flex items-center justify-between mt-0 px-6 py-2">-->
+<!--       <div class="md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">-->
+<!--          <nav >-->
+<!--             <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">-->
+<!--                <li><a class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 item-menu" href="/">Home</a></li>-->
+<!--             </ul>-->
+<!--          </nav>-->
+<!--       </div>-->
+<!--       -->
+<!--    </div>-->
  </nav>
