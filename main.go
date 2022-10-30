@@ -34,8 +34,8 @@ var funcMap = template.FuncMap{
 		return unformated.Time.Format("2006-01-02")
 	},
 	"previewContent": func(fullContent githubv4.String) string {
-		if len(fullContent) >= 100 {
-			return string(fullContent)[0:100]
+		if len(fullContent) >= 250 {
+			return string(fullContent)[0:250]
 		}
 		return string(fullContent)
 	},
@@ -139,6 +139,6 @@ func main() {
 	log.Printf("Finished rendering the html.")
 
 	// push to the Github page
-	Push2Github()
+	//Push2Github()
 	log.Printf("Finished pushing latest blog content to github page.")
 }

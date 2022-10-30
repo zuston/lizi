@@ -21,37 +21,38 @@
                         <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-1">
                             <div class="flex flex-col gap-8">
                                 {{range .Discussions.Nodes}}
-                                <article class="group relative flex flex-col items-start rounded-xl p-5 bg-white">
+                                <article class="group relative flex flex-col items-start rounded-xl p-4 bg-white shadow">
                                     <div class="flex w-full items-center justify-between pb-3">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="text-xs text-neutral-500">
-                                                {{ .CreatedAt | formatDate }}</div>
+                                        <div>
+                                            <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+                                                <div
+                                                        class="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition  dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl">
+                                                </div><a
+                                                    href="/article/{{.Number}}.html"><span
+                                                    class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span
+                                                    class="relative z-10">{{ .Title}}</span></a>
+                                            </h2>
                                         </div>
-                                        <div class="flex items-center space-x-8">
+                                        <div class="flex items-center space-x-8 float-right  sr-only sm:not-sr-only">
                                             {{range .Lables.Nodes}}
                                             <span
-                                                class="ml-4 text-xs inline-flex items-center leading-sm uppercase px-3 py-1 bg-green-200 text-teal-500 rounded-full">
+                                                    class="ml-4 text-xs inline-flex items-center leading-sm uppercase px-3 py-1 bg-green-200 text-teal-500 rounded-full">
                                                 #{{.Name}}
                                             </span>
-
                                             {{end}}
                                         </div>
                                     </div>
-                                    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-                                        <div
-                                            class="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition  dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl">
-                                        </div><a
-                                            href="/article/{{.Number}}.html"><span
-                                                class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span><span
-                                                class="relative z-10">{{ .Title}}</span></a>
 
-
-                                    </h2>
                                     <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                                         {{  .BodyText | previewContent}}
                                     </p>
                                     <div aria-hidden="true"
                                         class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
+                                        <div class="text-xs text-neutral-500">
+                                            {{ .CreatedAt | formatDate }}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </div>
+
                                         阅读文章<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"
                                             class="ml-1 h-4 w-4 stroke-current">
                                             <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5"
@@ -72,17 +73,17 @@
 
         <div class='flex items-center justify-center mt-10'>
             <div class="flex justify-center items-center space-x-4">
-                {{ if .PageInfo.HasPreviousPage }}
-                <a class="px-2 py-1 text-3xl leading-6 text-slate-400 transition cursor-pointer "  href="/?pre={{.PageInfo.StartCursor}}"> < </a>
+                {{ if .Discussions.PageInfo.HasPreviousPage }}
+                <a class="px-2 py-1 text-3xl leading-6 text-slate-400 transition cursor-pointer "  href="/?pre={{.Discussions.PageInfo.StartCursor}}"> < </a>
                 {{ end }}
-                {{ if .PageInfo.HasNextPage}}
-                <a class="px-2 py-1 text-3xl leading-6 text-slate-400 transition  cursor-pointer"  href="/?next={{.PageInfo.EndCursor}}"> > </a>
+                {{ if .Discussions.PageInfo.HasNextPage}}
+                <a class="px-2 py-1 text-3xl leading-6 text-slate-400 transition  cursor-pointer"  href="/?next={{.Discussions.PageInfo.EndCursor}}"> > </a>
                 {{ end }}    
             </div>
         </div>
-    </main>
 
-    {{template "footer.html"}}
+        {{template "footer.html"}}
+    </main>
 </body>
 
 </html>
