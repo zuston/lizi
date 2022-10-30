@@ -4,8 +4,8 @@
 <head>
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{{ .Title }}</title>
-    <meta name="description" content="{{  .BodyText | previewContent}}" />
+    <title>{{ .Post.Title }}</title>
+    <meta name="description" content="{{  .Post.BodyText | previewContent}}" />
     <script src="/js/tailwindcss.js"></script>
 </head>
 
@@ -33,14 +33,14 @@
                                             <header class="flex flex-col">
                                                 <h1
                                                     class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-                                                    {{ .Title }}</h1>
+                                                    {{ .Post.Title }}</h1>
                                                 <div class="flex w-full items-center justify-between pb-3 mt-6">
                                                     <div class="flex items-center space-x-3">
                                                         <div class="text-xs text-neutral-500">
-                                                            {{ .CreatedAt | formatDate }}</div>
+                                                            {{ .Post.CreatedAt | formatDate }}</div>
                                                     </div>
                                                     <div class="flex items-center space-x-8">
-                                                        {{range .Lables.Nodes}}
+                                                        {{range .Post.Lables.Nodes}}
                                                         <span
                                                             class="ml-4 text-xs inline-flex items-center leading-sm uppercase px-3 py-1 bg-green-200 text-teal-500 rounded-full">
                                                             #{{.Name}}
@@ -53,7 +53,7 @@
                                             <div class="mt-8">
                                                 <div
                                                     class="d-block color-fg-default comment-body markdown-body js-comment-body">
-                                                    {{ .BodyHTML }}
+                                                    {{ .Post.BodyHTML }}
                                                 </div>
                                             </div>
                                         </article>
@@ -66,7 +66,7 @@
             </main>
             <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
                 <script src="https://utteranc.es/client.js"
-                        repo="zuston/comment"
+                        repo="{{ .CommentRepo }}"
                         issue-term="pathname"
                         theme="github-light"
                         crossorigin="anonymous"

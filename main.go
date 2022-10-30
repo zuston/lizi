@@ -12,12 +12,20 @@ import (
 )
 
 var githubUserName = os.Getenv("GITHUB_USER_NAME")
-var githubRepo = os.Getenv("GITHUB_REPO")
+var githubRepo = os.Getenv("GITHUB_DISCUSSION_REPO")
 var githubAccessToken = os.Getenv("GITHUB_ACCESS_TOKEN")
 
-var githubPageRepo = "github.com/zuston/zuston.github.io.git"
-var githubPageAuthor = "Junfan Zhang"
-var githubPageEmail = "zuston@apache.org"
+// var githubCommentRepo = "zuston/zuston.github.io"
+var githubCommentRepo = os.Getenv("GITHUB_COMMENT_REPO")
+
+// var githubPageRepo = "github.com/zuston/zuston.github.io.git"
+var githubPageRepo = os.Getenv("GITHUB_PAGE_REPO")
+
+// var githubPageAuthor = "Junfan Zhang"
+var githubPageAuthor = os.Getenv("GITHUB_PAGE_AUTHOR")
+
+// var githubPageEmail = "zuston@apache.org"
+var githubPageEmail = os.Getenv("GITHUB_PAGE_EMAIL")
 
 var api = core.NewApi(githubUserName, githubRepo, githubAccessToken)
 
@@ -31,6 +39,16 @@ var funcMap = template.FuncMap{
 		}
 		return string(fullContent)
 	},
+}
+
+type IndexPageInfo struct {
+	Discussions core.Discussions
+	User        string
+}
+
+type PostPageInfo struct {
+	Post        core.Node
+	CommentRepo string
 }
 
 func Render() {
@@ -63,7 +81,7 @@ func Render() {
 	}
 
 	indexFile, err := os.Create("./output/index.html")
-	indexTemplate.Execute(indexFile, discussions)
+	indexTemplate.Execute(indexFile, IndexPageInfo{Discussions: discussions, User: githubUserName})
 
 	// create the article dir
 	err = os.Mkdir("./output/article", os.ModePerm)
@@ -78,7 +96,10 @@ func Render() {
 			"templates/base/footer.html",
 			"templates/post.html")
 		postFile, err := os.Create(fmt.Sprintf("./output/article/%d.html", number))
-		postTemplate.Execute(postFile, page)
+		postTemplate.Execute(postFile, PostPageInfo{
+			page,
+			githubCommentRepo,
+		})
 		log.Printf("Successfully rendered the post of [%d]", number)
 	}
 }

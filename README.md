@@ -6,9 +6,9 @@ This project is to fetch the github discussion content as blog post, and then de
 Now the deployment of vercel has been supported, doc will be added ASAP.
 
 ### Roadmap
-1. Support blog comment
-2. Support specific label/category to decide whether to publish
-3. Support pluggable blog template
-4. Support github page
-5. Support github issue as blog content
-6. Support producing artifact by github workflow action
+- [x] Support blog comment 
+- [ ] Support specific label/category to decide whether to publish
+- [ ] Support pluggable blog template
+- [x] Support github page
+- [ ] Support github issue as blog content
+- [ ] Support producing artifact by github workflow action
