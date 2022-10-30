@@ -139,6 +139,6 @@ func main() {
 	log.Printf("Finished rendering the html.")
 
 	// push to the Github page
-	//Push2Github()
+	Push2Github()
 	log.Printf("Finished pushing latest blog content to github page.")
 }

@@ -6,7 +6,7 @@ This project is to fetch the github discussion content as blog post, and then de
 Now the deployment of vercel has been supported, doc will be added ASAP.
 
 #### Example
-The blog site is built by this project, http://zuston.github.io
+The blog site is built by this project http://zuston.github.io
 
 ### Roadmap
 - [x] Support blog comment 
@@ -16,3 +16,4 @@ The blog site is built by this project, http://zuston.github.io
 - [ ] Support github issue as blog content
 - [ ] Support producing artifact by github workflow action
 - [ ] Provide the github-action to trigger the github-page deploy
+- [ ] Customize the publishing data
