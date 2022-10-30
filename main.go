@@ -8,11 +8,16 @@ import (
 	"os/exec"
 	"pure/core"
 	"text/template"
+	"time"
 )
 
 var githubUserName = os.Getenv("GITHUB_USER_NAME")
 var githubRepo = os.Getenv("GITHUB_REPO")
 var githubAccessToken = os.Getenv("GITHUB_ACCESS_TOKEN")
+
+var githubPageRepo = "github.com/zuston/zuston.github.io.git"
+var githubPageAuthor = "Junfan Zhang"
+var githubPageEmail = "zuston@apache.org"
 
 var api = core.NewApi(githubUserName, githubRepo, githubAccessToken)
 
@@ -78,7 +83,41 @@ func Render() {
 	}
 }
 
+func execCommand(cmdDir string, cmdName string, cmdArgs ...string) {
+	cmd := exec.Command(cmdName, cmdArgs...)
+	cmd.Dir = cmdDir
+	output, err := cmd.Output()
+	log.Printf("%s - %v", string(output), err)
+}
+
+func Push2Github() {
+	// Remove the original folder
+	os.RemoveAll("/tmp/output")
+
+	// cp the output to /tmp folder
+	cmd := exec.Command("cp", "-r", "./output", "/tmp")
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal("Errors on copying output to tmp folder.")
+	}
+	// Initialize git repo
+	execCmdWithDir := func(name string, args ...string) {
+		execCommand("/tmp/output", name, args...)
+	}
+	execCmdWithDir("git", "init")
+	execCmdWithDir("git", "remote", "add", "origin", "https://"+githubPageRepo)
+	execCmdWithDir("git", "add", ".")
+	execCmdWithDir("git", "config", "user.email", githubPageEmail)
+	execCmdWithDir("git", "config", "user.name", githubPageAuthor)
+	execCmdWithDir("git", "commit", "-m", "Publish latest post in "+time.ANSIC)
+	execCmdWithDir("git", "push", "-f", fmt.Sprintf("https://%s@%s", githubAccessToken, githubPageRepo))
+}
+
 func main() {
 	Render()
 	log.Printf("Finished rendering the html.")
+
+	// push to the Github page
+	Push2Github()
+	log.Printf("Finished pushing latest blog content to github page.")
 }
