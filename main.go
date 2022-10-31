@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"pure/core"
+	"strconv"
 	"text/template"
 	"time"
 )
@@ -14,6 +15,8 @@ import (
 var githubUserName = os.Getenv("GITHUB_USER_NAME")
 var githubRepo = os.Getenv("GITHUB_DISCUSSION_REPO")
 var githubAccessToken = os.Getenv("GITHUB_ACCESS_TOKEN")
+
+var githubPageEnabled, _ = strconv.ParseBool(getEnvWithDefault("GITHUB_PAGE_ENABLED", "false"))
 
 // var githubCommentRepo = "zuston/zuston.github.io"
 var githubCommentRepo = os.Getenv("GITHUB_COMMENT_REPO")
@@ -28,6 +31,14 @@ var githubPageAuthor = os.Getenv("GITHUB_PAGE_AUTHOR")
 var githubPageEmail = os.Getenv("GITHUB_PAGE_EMAIL")
 
 var api = core.NewApi(githubUserName, githubRepo, githubAccessToken)
+
+func getEnvWithDefault(key string, defVal string) string {
+	val, exist := os.LookupEnv(key)
+	if !exist {
+		return defVal
+	}
+	return val
+}
 
 var funcMap = template.FuncMap{
 	"formatDate": func(unformated githubv4.DateTime) string {
@@ -139,6 +150,8 @@ func main() {
 	log.Printf("Finished rendering the html.")
 
 	// push to the Github page
-	Push2Github()
-	log.Printf("Finished pushing latest blog content to github page.")
+	if githubPageEnabled {
+		Push2Github()
+		log.Printf("Finished pushing latest blog content to github page.")
+	}
 }
