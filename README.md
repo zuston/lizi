@@ -10,10 +10,12 @@ The blog site is built by this project http://zuston.github.io
 
 ### Roadmap
 - [x] Support blog comment 
-- [ ] Support specific label/category to decide whether to publish
-- [ ] Support pluggable blog template
+- [x] Support specific label/category to decide whether to publish
 - [x] Support github page
-- [ ] Support github issue as blog content
-- [ ] Support producing artifact by github workflow action
-- [ ] Provide the github-action to trigger the github-page deploy
+- [x] Provide the github-action to trigger the github-page deploy
+- [x] Support dark mode of basic template
 - [ ] Customize the publishing data
+- [ ] Support producing artifact by github workflow action
+- [ ] Support github issue as blog content
+- [ ] Support pluggable blog template
+- [ ] Add the deployment document
