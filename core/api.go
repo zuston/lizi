@@ -47,7 +47,7 @@ func (api *api) FetchPosts(before string, after string) (posts Discussions, err 
 		"repo":             githubv4.String(api.repo),
 		"after":            (*githubv4.String)(nil),
 		"before":           (*githubv4.String)(nil),
-		"categoryId":       os.Getenv("CATEGORY_ID"),
+		"categoryId":       os.Getenv("LIZI_GITHUB_CATEGORY_ID"),
 		"label_first":      githubv4.Int(LABEL_MAX_COUNT),
 	}
 

@@ -12,23 +12,23 @@ import (
 	"time"
 )
 
-var githubUserName = os.Getenv("GITHUB_USER_NAME")
-var githubRepo = os.Getenv("GITHUB_DISCUSSION_REPO")
-var githubAccessToken = os.Getenv("GITHUB_ACCESS_TOKEN")
+var githubUserName = os.Getenv("LIZI_GITHUB_USER_NAME")
+var githubRepo = os.Getenv("LIZI_GITHUB_DISCUSSION_REPO")
+var githubAccessToken = os.Getenv("LIZI_GITHUB_ACCESS_TOKEN")
 
-var githubPageEnabled, _ = strconv.ParseBool(getEnvWithDefault("GITHUB_PAGE_ENABLED", "false"))
+var githubPageEnabled, _ = strconv.ParseBool(getEnvWithDefault("LIZI_GITHUB_PAGE_ENABLED", "false"))
 
 // var githubCommentRepo = "zuston/zuston.github.io"
-var githubCommentRepo = os.Getenv("GITHUB_COMMENT_REPO")
+var githubCommentRepo = os.Getenv("LIZI_GITHUB_COMMENT_REPO")
 
 // var githubPageRepo = "github.com/zuston/zuston.github.io.git"
-var githubPageRepo = os.Getenv("GITHUB_PAGE_REPO")
+var githubPageRepo = os.Getenv("LIZI_GITHUB_PAGE_REPO")
 
 // var githubPageAuthor = "Junfan Zhang"
-var githubPageAuthor = os.Getenv("GITHUB_PAGE_AUTHOR")
+var githubPageAuthor = os.Getenv("LIZI_GITHUB_PAGE_AUTHOR")
 
 // var githubPageEmail = "zuston@apache.org"
-var githubPageEmail = os.Getenv("GITHUB_PAGE_EMAIL")
+var githubPageEmail = os.Getenv("LIZI_GITHUB_PAGE_EMAIL")
 
 var api = core.NewApi(githubUserName, githubRepo, githubAccessToken)
 
