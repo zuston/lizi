@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"github.com/shurcooL/githubv4"
+	"lizi/core"
 	"log"
 	"os"
 	"os/exec"
-	"pure/core"
 	"strconv"
 	"text/template"
 	"time"

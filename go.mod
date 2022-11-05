@@ -1,4 +1,4 @@
-module pure
+module lizi
 
 go 1.19
 
