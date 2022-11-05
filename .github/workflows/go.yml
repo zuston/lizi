@@ -4,6 +4,29 @@
 name: Go
 
 on:
+  workflow_call:
+    inputs:
+      ENVIRONMENT:
+        required: true
+        type: string
+    secrets:
+      LIZI_GITHUB_USER_NAME:
+        required: true
+      LIZI_GITHUB_DISCUSSION_REPO:
+        required: true
+      LIZI_GITHUB_ACCESS_TOKEN:
+        required: true
+      LIZI_GITHUB_COMMENT_REPO:
+        required: true
+      LIZI_GITHUB_PAGE_REPO:
+        required: true
+      LIZI_GITHUB_PAGE_AUTHOR:
+        required: true
+      LIZI_GITHUB_PAGE_EMAIL:
+        required: true
+      LIZI_GITHUB_PAGE_ENABLED:
+        required: false
+
   push:
     branches: [ "master" ]
   pull_request:
@@ -13,6 +36,17 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+
+    env:
+      LIZI_GITHUB_USER_NAME: ${{ secrets.LIZI_GITHUB_USER_NAME }}
+      LIZI_GITHUB_DISCUSSION_REPO: ${{ secrets.LIZI_GITHUB_DISCUSSION_REPO }}
+      LIZI_GITHUB_ACCESS_TOKEN: ${{ secrets.LIZI_GITHUB_ACCESS_TOKEN }}
+      LIZI_GITHUB_COMMENT_REPO: ${{ secrets.LIZI_GITHUB_COMMENT_REPO }}
+      LIZI_GITHUB_PAGE_REPO: ${{ secrets.LIZI_GITHUB_PAGE_REPO }}
+      LIZI_GITHUB_PAGE_AUTHOR: ${{ secrets.LIZI_GITHUB_PAGE_AUTHOR }}
+      LIZI_GITHUB_PAGE_EMAIL: ${{ secrets.LIZI_GITHUB_PAGE_EMAIL }}
+      LIZI_GITHUB_PAGE_ENABLED: ${{ secrets.LIZI_GITHUB_PAGE_ENABLED }}
+
     steps:
     - uses: actions/checkout@v3
 
@@ -22,7 +56,7 @@ jobs:
         go-version: 1.18
 
     - name: Build
-      run: go build -v ./...
+      run: go build ./
 
-    - name: Test
-      run: go test -v ./...
+    - name: Run
+      run: ./lizi
