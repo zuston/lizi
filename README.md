@@ -57,7 +57,7 @@ Please refer https://pages.github.com/ to create your own website project.
 2. Trigger lizi Github action to render blog content. Please fill "x" in the required field .
    ![image](./assets/img_5.png)
 
-
+3. Visit your website link after 10sec, link: __[username].github.io__ (like zuston.github.io)
 ## Roadmap
 - [x] Support blog comment 
 - [x] Support specific label/category to decide whether to publish
