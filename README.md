@@ -19,3 +19,4 @@ The blog site is built by this project http://zuston.github.io
 - [ ] Support github issue as blog content
 - [ ] Support pluggable blog template
 - [ ] Add the deployment document
+- [x] Support list semantics of markdown from github
