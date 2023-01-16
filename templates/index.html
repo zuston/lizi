@@ -23,9 +23,11 @@
                             <div class="flex flex-col gap-1">
 
                                 {{range .Discussions.Nodes}}
-                                <div class="text-left">
-                                    <span class="mr-1 text-gray-500 font-serif">{{ .CreatedAt | formatDate }}</span>
-                                    <span class="text-lg font-medium"><a href="/article/{{.Number}}.html" class="text-black-500 hover:text-blue-700 hover:underline">{{ .Title}}</a></span>
+                                <div class="flex gap-6 font-medium text-zinc-800 dark:text-zinc-200">
+                                    <p class="text-zinc-400 dark:text-zinc-500">
+                                        {{ .CreatedAt | formatDate }}
+                                    </p>
+                                    <a class="transition text-gray-800 hover:text-teal-500 dark:hover:text-teal-400 hover:underline" href="/article/{{.Number}}.html">{{ .Title}}</a>
                                 </div>
                                 {{end}}
 
