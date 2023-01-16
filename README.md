@@ -54,7 +54,9 @@ Please refer https://pages.github.com/ to create your own website project.
 1. Create a discussion in your content project and write something.
    ![image](./assets/img_4.png)
 
-2. Trigger lizi Github action to render blog content.
+2. Trigger lizi Github action to render blog content. Please fill "x" in the required field .
+   ![image](./assets/img_5.png)
+
 
 ## Roadmap
 - [x] Support blog comment 
