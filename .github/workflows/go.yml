@@ -4,6 +4,28 @@
 name: Go
 
 on:
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT:
+        required: true
+        type: string
+    secrets:
+      LIZI_GITHUB_USER_NAME:
+        required: true
+      LIZI_GITHUB_DISCUSSION_REPO:
+        required: true
+      LIZI_GITHUB_ACCESS_TOKEN:
+        required: true
+      LIZI_GITHUB_COMMENT_REPO:
+        required: true
+      LIZI_GITHUB_PAGE_REPO:
+        required: true
+      LIZI_GITHUB_PAGE_AUTHOR:
+        required: true
+      LIZI_GITHUB_PAGE_EMAIL:
+        required: true
+      LIZI_GITHUB_PAGE_ENABLED:
+        required: false
   workflow_call:
     inputs:
       ENVIRONMENT:
