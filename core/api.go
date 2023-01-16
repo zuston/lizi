@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/shurcooL/githubv4"
 	"golang.org/x/oauth2"
@@ -87,7 +88,10 @@ func (api *api) FetchPost(number int) (discussion Node, err error) {
 		return Node{}, err
 	}
 	post := q.Reposity.Discussion
-
+	markdownHtml := post.BodyHTML
+	changed := strings.ReplaceAll(string(markdownHtml), "<ol", "<ol class=\"list-decimal list-outside\"")
+	changed = strings.ReplaceAll(changed, "<ul", "<ul class=\"list-disc list-outside\"")
+	post.BodyHTML = githubv4.HTML(changed)
 	return post, err
 }
 
